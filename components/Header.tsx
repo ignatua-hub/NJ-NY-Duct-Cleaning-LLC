@@ -19,13 +19,13 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
         <a
           href="#top"
           className="flex min-h-11 min-w-0 shrink items-center"
           aria-label="NJ&NY Duct Cleaning LLC home"
         >
-          <BrandLogo height={40} />
+          <BrandLogo height={64} />
         </a>
 
         <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">

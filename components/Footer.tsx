@@ -32,7 +32,7 @@ export default function Footer() {
       <div className="relative z-10 mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
-            <BrandLogo height={48} />
+            <BrandLogo height={96} />
             <p className="mt-4 text-base leading-relaxed text-brand-muted">
               NJ&amp;NY Duct Cleaning LLC — New Jersey&apos;s trusted experts in air duct,
               dryer vent, chimney and HVAC care. Healthier air, safer homes.

@@ -14,7 +14,7 @@ type BrandLogoProps = {
  */
 export default function BrandLogo({ className = "", height = 48 }: BrandLogoProps) {
   const [failed, setFailed] = useState(false);
-  const width = Math.round(height * 2.4);
+  const width = Math.round(height * (900 / 553));
 
   if (failed) {
     return (
@@ -62,8 +62,8 @@ export default function BrandLogo({ className = "", height = 48 }: BrandLogoProp
       alt="NJ&NY Duct Cleaning LLC"
       width={width}
       height={height}
-      className={`h-auto w-auto object-contain ${className}`}
-      style={{ maxHeight: height }}
+      className={`object-contain ${className}`}
+      style={{ height, width: "auto" }}
       priority
       onError={() => setFailed(true)}
     />

@@ -26,13 +26,7 @@ Then open [http://127.0.0.1:43123](http://127.0.0.1:43123).
 
 ## Logo
 
-Place the official company logo at:
-
-```text
-public/images/logo.png
-```
-
-If `logo.png` is missing, the site shows a brand-matching SVG/text mark (dark background, electric-blue accents). Drop the real logo file at that path to replace the fallback.
+The company logo lives at `public/images/logo.png` (black background trimmed, 900×553). To swap it, replace that file and update the aspect ratio in `components/BrandLogo.tsx` if the new file has different proportions. If the file is missing, the site falls back to an SVG/text brand mark.
 
 ## Before / after photos
 
@@ -56,4 +50,3 @@ Missing images show an “Add photo” placeholder. Register new jobs in `data/b
 - Email placeholders (`info@example.com`)
 - Real customer reviews in `components/Testimonials.tsx`
 - Real before/after job photos
-- Official `public/images/logo.png`
