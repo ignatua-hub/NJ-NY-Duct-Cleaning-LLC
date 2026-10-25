@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, Inter } from "next/font/google";
 import "./globals.css";
-import { PHONE_E164 } from "@/lib/contact";
+import { HOURS_CLOSE, HOURS_OPEN, OPEN_DAYS, PHONE_E164 } from "@/lib/contact";
 
 const heading = Barlow_Condensed({
   subsets: ["latin"],
@@ -50,6 +50,14 @@ const localBusinessJsonLd = {
   name: "NJ&NY Duct Cleaning LLC",
   description: SITE_DESCRIPTION,
   telephone: PHONE_E164,
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: OPEN_DAYS,
+      opens: HOURS_OPEN,
+      closes: HOURS_CLOSE,
+    },
+  ],
   // TODO: replace with real business email
   email: "info@example.com",
   areaServed: {

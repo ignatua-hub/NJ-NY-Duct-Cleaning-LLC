@@ -10,7 +10,7 @@ import {
 } from "react";
 import { BadgeCheck, Clock, Mail, Phone } from "lucide-react";
 import FadeIn from "./FadeIn";
-import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/contact";
+import { HOURS_DISPLAY, PHONE_DISPLAY, PHONE_HREF } from "@/lib/contact";
 
 const SERVICES = [
   "Air Duct Cleaning",
@@ -265,10 +265,8 @@ export default function QuoteForm() {
                 </span>
                 <div>
                   <span className="block text-xs text-brand-muted">Working hours</span>
-                  <span className="font-semibold">Mon–Sat · 8:00 AM – 6:00 PM</span>
-                  <span className="mt-1 block text-sm text-brand-muted">
-                    Sunday by appointment
-                  </span>
+                  <span className="font-semibold">{HOURS_DISPLAY}</span>
+                  <span className="mt-1 block text-sm text-brand-muted">Sunday: closed</span>
                 </div>
               </div>
             </aside>
