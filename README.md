@@ -53,7 +53,6 @@ Missing images show an “Add photo” placeholder. Register new jobs in `data/b
 
 ## Replace before launch
 
-- Phone number placeholders (`(000) 000-0000`)
 - Email placeholders (`info@example.com`)
 - Real customer reviews in `components/Testimonials.tsx`
 - Real before/after job photos

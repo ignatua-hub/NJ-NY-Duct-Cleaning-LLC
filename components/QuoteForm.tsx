@@ -10,6 +10,7 @@ import {
 } from "react";
 import { BadgeCheck, Clock, Mail, Phone } from "lucide-react";
 import FadeIn from "./FadeIn";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/contact";
 
 const SERVICES = [
   "Air Duct Cleaning",
@@ -18,9 +19,6 @@ const SERVICES = [
   "HVAC Maintenance",
 ] as const;
 
-// TODO: replace with real business phone number
-const PHONE_DISPLAY = "(000) 000-0000";
-const PHONE_HREF = "tel:+10000000000";
 // TODO: replace with real business email
 const EMAIL_DISPLAY = "info@example.com";
 const EMAIL_HREF = "mailto:info@example.com";
@@ -234,7 +232,6 @@ export default function QuoteForm() {
                 </p>
               </div>
 
-              {/* TODO: replace with real business phone number */}
               <a
                 href={PHONE_HREF}
                 className="flex min-h-11 items-center gap-3 text-white transition hover:text-brand-cyan"

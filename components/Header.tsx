@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import BrandLogo from "./BrandLogo";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/contact";
 
 const NAV_LINKS = [
   { href: "#services", label: "Services" },
@@ -12,10 +13,6 @@ const NAV_LINKS = [
   { href: "#service-area", label: "Service Area" },
   { href: "#contact", label: "Contact" },
 ];
-
-// TODO: replace with real business phone number
-const PHONE_DISPLAY = "(000) 000-0000";
-const PHONE_HREF = "tel:+10000000000";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -44,7 +41,6 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          {/* TODO: replace with real business phone number */}
           <a href={PHONE_HREF} className="btn-secondary gap-2 !px-4 !py-2 text-sm">
             <Phone className="h-4 w-4" aria-hidden="true" />
             {PHONE_DISPLAY}
@@ -82,7 +78,6 @@ export default function Header() {
                 {link.label}
               </a>
             ))}
-            {/* TODO: replace with real business phone number */}
             <a
               href={PHONE_HREF}
               className="btn-secondary mt-2 min-h-11 w-full gap-2 text-base"

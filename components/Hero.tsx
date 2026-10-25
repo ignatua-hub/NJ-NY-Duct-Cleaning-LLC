@@ -3,6 +3,7 @@
 import { CheckCircle2, Phone } from "lucide-react";
 import Skyline from "./Skyline";
 import FadeIn from "./FadeIn";
+import { PHONE_HREF } from "@/lib/contact";
 
 const TRUST_BADGES = [
   "Licensed & Insured",
@@ -10,9 +11,6 @@ const TRUST_BADGES = [
   "Same-Week Appointments",
   "Upfront Pricing",
 ];
-
-// TODO: replace with real business phone number
-const PHONE_HREF = "tel:+10000000000";
 
 export default function Hero() {
   return (
@@ -63,7 +61,6 @@ export default function Hero() {
             <a href="#contact" className="btn-primary min-h-11 w-full text-base sm:w-auto">
               Get a Free Quote
             </a>
-            {/* TODO: replace with real business phone number */}
             <a href={PHONE_HREF} className="btn-secondary min-h-11 w-full gap-2 text-base sm:w-auto">
               <Phone className="h-4 w-4" aria-hidden="true" />
               Call Now

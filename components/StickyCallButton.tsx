@@ -1,9 +1,7 @@
 "use client";
 
 import { Phone } from "lucide-react";
-
-// TODO: replace with real business phone number
-const PHONE_HREF = "tel:+10000000000";
+import { PHONE_HREF } from "@/lib/contact";
 
 export default function StickyCallButton() {
   return (

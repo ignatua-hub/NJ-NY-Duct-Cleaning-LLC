@@ -1,5 +1,6 @@
 import BrandLogo from "./BrandLogo";
 import Skyline from "./Skyline";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/contact";
 
 const FOOTER_LINKS = [
   { href: "#services", label: "Services" },
@@ -17,9 +18,6 @@ const SERVICE_LINKS = [
   "HVAC Maintenance",
 ];
 
-// TODO: replace with real business phone number
-const PHONE_DISPLAY = "(000) 000-0000";
-const PHONE_HREF = "tel:+10000000000";
 // TODO: replace with real business email
 const EMAIL_DISPLAY = "info@example.com";
 const EMAIL_HREF = "mailto:info@example.com";
@@ -83,7 +81,6 @@ export default function Footer() {
             </h3>
             <ul className="mt-3 text-base text-brand-muted">
               <li>
-                {/* TODO: replace with real business phone number */}
                 <a href={PHONE_HREF} className="flex min-h-11 items-center transition hover:text-white">
                   {PHONE_DISPLAY}
                 </a>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, Inter } from "next/font/google";
 import "./globals.css";
+import { PHONE_E164 } from "@/lib/contact";
 
 const heading = Barlow_Condensed({
   subsets: ["latin"],
@@ -48,8 +49,7 @@ const localBusinessJsonLd = {
   "@type": "LocalBusiness",
   name: "NJ&NY Duct Cleaning LLC",
   description: SITE_DESCRIPTION,
-  // TODO: replace with real business phone number
-  telephone: "+1-000-000-0000",
+  telephone: PHONE_E164,
   // TODO: replace with real business email
   email: "info@example.com",
   areaServed: {
