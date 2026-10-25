@@ -85,11 +85,8 @@ export default function BeforeAfterGallery() {
                   title={project.title}
                   priority={index === 0}
                 />
-                <div className="mt-3 px-1 pb-1">
-                  <h3 className="font-heading text-lg font-extrabold italic text-white">
-                    {project.title}
-                  </h3>
-                  <span className="mt-1 inline-block rounded-pill border border-white/10 bg-white/5 px-2.5 py-0.5 text-xs font-medium text-brand-cyan">
+                <div className="mt-3 flex px-1">
+                  <span className="rounded-pill border border-white/10 bg-white/5 px-2.5 py-0.5 text-xs font-medium text-brand-cyan">
                     {project.service}
                   </span>
                 </div>
