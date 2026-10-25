@@ -32,8 +32,8 @@ export const beforeAfterProjects: BeforeAfterProject[] = [
     id: "job-2",
     title: "Lint-Clogged Dryer Line — Jersey City",
     service: "Dryer Vent",
-    beforeSrc: "/images/before-after/job-2-before.jpg",
-    afterSrc: "/images/before-after/job-2-after.jpg",
+    beforeSrc: "/images/before-after/dryer-vent/job-2-before.jpg",
+    afterSrc: "/images/before-after/dryer-vent/job-2-after.jpg",
   },
   {
     id: "job-3",
