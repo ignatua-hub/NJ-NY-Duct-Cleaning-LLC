@@ -164,10 +164,9 @@ export default function BeforeAfterSlider({
     return () => observer.disconnect();
   }, []);
 
-  // BEFORE is top layer clipped with inset(0 X% 0 0) where X = 100 - position.
-  // Dragging RIGHT increases position → reveals MORE BEFORE.
-  // Dragging LEFT decreases position → reveals MORE AFTER.
-  const beforeClip = `inset(0 ${100 - position}% 0 0)`;
+  // position = % of AFTER revealed, left of the handle. 0 = BEFORE only, 100 = AFTER only.
+  const afterClip = `inset(0 calc(100% - ${position}%) 0 0)`;
+  const roundedPosition = Math.round(position);
 
   return (
     <div
@@ -182,21 +181,12 @@ export default function BeforeAfterSlider({
       tabIndex={0}
       aria-valuemin={0}
       aria-valuemax={100}
-      aria-valuenow={Math.round(position)}
-      aria-label="Before and after comparison"
+      aria-valuenow={roundedPosition}
+      aria-valuetext={`${roundedPosition}% after cleaning shown`}
+      aria-label="Before and after comparison. Move right to reveal after cleaning, left to reveal before cleaning."
       onKeyDown={onKeyDown}
     >
-      {/* AFTER — bottom layer */}
-      <div className="absolute inset-0">
-        <PhotoOrPlaceholder
-          src={afterSrc}
-          alt={`${title} — after cleaning`}
-          priority={priority}
-        />
-      </div>
-
-      {/* BEFORE — top layer, clipped */}
-      <div className="absolute inset-0" style={{ clipPath: beforeClip }}>
+      <div className="absolute inset-0" data-layer="before">
         <PhotoOrPlaceholder
           src={beforeSrc}
           alt={`${title} — before cleaning`}
@@ -204,33 +194,38 @@ export default function BeforeAfterSlider({
         />
       </div>
 
-      {/* Labels */}
+      <div className="absolute inset-0" data-layer="after" style={{ clipPath: afterClip }}>
+        <PhotoOrPlaceholder
+          src={afterSrc}
+          alt={`${title} — after cleaning`}
+          priority={priority}
+        />
+      </div>
+
       <span className="pointer-events-none absolute left-3 top-3 z-20 inline-flex items-center gap-1.5 rounded-pill bg-black/75 px-3 py-1 text-xs font-semibold tracking-wide text-white">
         <span className="h-1.5 w-1.5 rounded-full bg-brand-cyan" aria-hidden="true" />
-        BEFORE
+        AFTER
       </span>
       <span className="pointer-events-none absolute right-3 top-3 z-20 inline-flex items-center gap-1.5 rounded-pill bg-black/75 px-3 py-1 text-xs font-semibold tracking-wide text-white">
         <span className="h-1.5 w-1.5 rounded-full bg-brand-cyan" aria-hidden="true" />
-        AFTER
+        BEFORE
       </span>
 
       {/* Divider + handle */}
       <div
-        className="pointer-events-none absolute inset-y-0 z-30"
-        style={{ left: `${position}%`, transform: "translateX(-50%)" }}
+        className="pointer-events-none absolute inset-y-0 z-30 w-[3px] -translate-x-1/2 bg-white"
+        style={{ left: `${position}%` }}
+      />
+      <div
+        className="absolute top-1/2 z-30 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-glow"
+        style={{
+          left: `clamp(22px, ${position}%, calc(100% - 22px))`,
+          backgroundImage: "linear-gradient(135deg, #29B6FF 0%, #0A5BFF 100%)",
+          touchAction: "none",
+        }}
       >
-        <div className="absolute inset-y-0 left-1/2 w-[3px] -translate-x-1/2 bg-white" />
-        <div
-          className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-glow"
-          style={{
-            backgroundImage: "linear-gradient(135deg, #29B6FF 0%, #0A5BFF 100%)",
-            touchAction: "none",
-            pointerEvents: "auto",
-          }}
-        >
-          <ChevronLeft className="h-4 w-4 text-white" aria-hidden="true" />
-          <ChevronRight className="h-4 w-4 text-white" aria-hidden="true" />
-        </div>
+        <ChevronLeft className="h-4 w-4 text-white" aria-hidden="true" />
+        <ChevronRight className="h-4 w-4 text-white" aria-hidden="true" />
       </div>
     </div>
   );

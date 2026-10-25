@@ -16,7 +16,8 @@ export type BeforeAfterProject = {
  * Before/after gallery projects.
  *
  * To add a new project:
- * 1. Drop job-N-before.jpg and job-N-after.jpg into /public/images/before-after/
+ * 1. Drop job-N-before.jpg (dirty) and job-N-after.jpg (clean) into /public/images/before-after/
+ *    or a service subfolder such as /public/images/before-after/dryer-vent/
  * 2. Append an entry below with a unique id, title, service, and those paths
  * 3. The gallery filter tabs will pick it up automatically
  */
