@@ -97,7 +97,7 @@ export default function QuoteForm() {
   ) => {
     const { as = "input", children, ...rest } = props;
     const shared =
-      "mt-1.5 w-full rounded-card border border-white/10 bg-black/40 px-4 py-3 text-sm text-white outline-none transition placeholder:text-brand-muted/60 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue";
+      "mt-1.5 min-h-11 w-full rounded-card border border-white/10 bg-black/40 px-4 py-3 text-base text-white outline-none transition placeholder:text-brand-muted/60 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue";
     return (
       <label className="block text-sm font-medium text-white" htmlFor={id}>
         {label}
@@ -237,7 +237,7 @@ export default function QuoteForm() {
               {/* TODO: replace with real business phone number */}
               <a
                 href={PHONE_HREF}
-                className="flex items-center gap-3 text-white transition hover:text-brand-cyan"
+                className="flex min-h-11 items-center gap-3 text-white transition hover:text-brand-cyan"
               >
                 <span className="rounded-full bg-white/5 p-2.5 text-brand-cyan">
                   <Phone className="h-5 w-5" aria-hidden="true" />
@@ -251,7 +251,7 @@ export default function QuoteForm() {
               {/* TODO: replace with real business email */}
               <a
                 href={EMAIL_HREF}
-                className="flex items-center gap-3 text-white transition hover:text-brand-cyan"
+                className="flex min-h-11 items-center gap-3 text-white transition hover:text-brand-cyan"
               >
                 <span className="rounded-full bg-white/5 p-2.5 text-brand-cyan">
                   <Mail className="h-5 w-5" aria-hidden="true" />

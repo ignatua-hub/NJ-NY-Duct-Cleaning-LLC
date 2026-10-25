@@ -15,7 +15,7 @@ export default function HomePage() {
   return (
     <>
       <Header />
-      <main className="pb-20 md:pb-0">
+      <main>
         <Hero />
         <AirflowDivider />
         <Services />

@@ -86,12 +86,12 @@ export default function Services() {
                     {service.title}
                   </h3>
                   <p className="mt-1 text-sm font-medium text-brand-cyan">{service.tagline}</p>
-                  <p className="mt-4 text-sm leading-relaxed text-brand-muted">{service.text}</p>
+                  <p className="mt-4 text-base leading-relaxed text-brand-muted">{service.text}</p>
                   <ul className="mt-5 space-y-2">
                     {service.bullets.map((bullet) => (
                       <li
                         key={bullet}
-                        className="flex items-start gap-2 text-sm text-white/90"
+                        className="flex items-start gap-2 text-base text-white/90"
                       >
                         <span
                           className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-cyan"
@@ -103,7 +103,7 @@ export default function Services() {
                   </ul>
                   <a
                     href="#contact"
-                    className="mt-6 inline-flex text-sm font-semibold text-brand-blue transition hover:text-brand-cyan"
+                    className="mt-4 inline-flex min-h-11 items-center text-base font-semibold text-brand-blue transition hover:text-brand-cyan"
                   >
                     Get a Quote →
                   </a>

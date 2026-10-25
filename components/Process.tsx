@@ -56,7 +56,7 @@ export default function Process() {
                   <h3 className="mt-4 font-heading text-xl font-extrabold italic text-white">
                     {step.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-brand-muted">
+                  <p className="mt-2 text-base leading-relaxed text-brand-muted">
                     {step.text}
                   </p>
                 </li>

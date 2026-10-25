@@ -35,7 +35,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
             <BrandLogo height={48} />
-            <p className="mt-4 text-sm leading-relaxed text-brand-muted">
+            <p className="mt-4 text-base leading-relaxed text-brand-muted">
               NJ&amp;NY Duct Cleaning LLC — New Jersey&apos;s trusted experts in air duct,
               dryer vent, chimney and HVAC care. Healthier air, safer homes.
             </p>
@@ -45,12 +45,12 @@ export default function Footer() {
             <h3 className="font-heading text-lg font-extrabold italic text-white">
               Explore
             </h3>
-            <ul className="mt-3 space-y-2">
+            <ul className="mt-3">
               {FOOTER_LINKS.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-sm text-brand-muted transition hover:text-white"
+                    className="flex min-h-11 items-center text-base text-brand-muted transition hover:text-white"
                   >
                     {link.label}
                   </a>
@@ -63,12 +63,12 @@ export default function Footer() {
             <h3 className="font-heading text-lg font-extrabold italic text-white">
               Services
             </h3>
-            <ul className="mt-3 space-y-2">
+            <ul className="mt-3">
               {SERVICE_LINKS.map((label) => (
                 <li key={label}>
                   <a
                     href="#services"
-                    className="text-sm text-brand-muted transition hover:text-white"
+                    className="flex min-h-11 items-center text-base text-brand-muted transition hover:text-white"
                   >
                     {label}
                   </a>
@@ -81,25 +81,25 @@ export default function Footer() {
             <h3 className="font-heading text-lg font-extrabold italic text-white">
               Contact
             </h3>
-            <ul className="mt-3 space-y-2 text-sm text-brand-muted">
+            <ul className="mt-3 text-base text-brand-muted">
               <li>
                 {/* TODO: replace with real business phone number */}
-                <a href={PHONE_HREF} className="transition hover:text-white">
+                <a href={PHONE_HREF} className="flex min-h-11 items-center transition hover:text-white">
                   {PHONE_DISPLAY}
                 </a>
               </li>
               <li>
                 {/* TODO: replace with real business email */}
-                <a href={EMAIL_HREF} className="transition hover:text-white">
+                <a href={EMAIL_HREF} className="flex min-h-11 items-center transition hover:text-white">
                   {EMAIL_DISPLAY}
                 </a>
               </li>
-              <li>Serving all of New Jersey</li>
+              <li className="flex min-h-11 items-center">Serving all of New Jersey</li>
             </ul>
           </div>
         </div>
 
-        <p className="mt-12 border-t border-white/10 pt-6 text-center text-xs text-brand-muted">
+        <p className="mt-12 border-t border-white/10 pt-6 text-center text-sm text-brand-muted">
           © 2026 NJ&amp;NY Duct Cleaning LLC. All rights reserved.
         </p>
       </div>

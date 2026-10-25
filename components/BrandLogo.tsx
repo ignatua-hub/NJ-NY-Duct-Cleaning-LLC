@@ -46,10 +46,7 @@ export default function BrandLogo({ className = "", height = 48 }: BrandLogoProp
             </linearGradient>
           </defs>
         </svg>
-        <span
-          className="font-heading text-lg font-extrabold italic leading-none tracking-tight sm:text-xl"
-          style={{ height }}
-        >
+        <span className="flex items-center whitespace-nowrap font-heading text-lg font-extrabold italic leading-none tracking-tight sm:text-xl">
           <span className="text-blue-gradient">NJ</span>
           <span className="text-silver">&amp;</span>
           <span className="text-blue-gradient">NY</span>

@@ -51,7 +51,7 @@ export default function Hero() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn>
-          <h1 className="font-heading text-5xl font-extrabold italic leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+          <h1 className="font-heading text-4xl font-extrabold italic leading-[1.05] tracking-tight min-[390px]:text-5xl sm:text-6xl lg:text-7xl">
             <span className="text-silver">Breathe Cleaner. </span>
             <span className="text-blue-gradient">Live Safer.</span>
           </h1>
@@ -60,11 +60,11 @@ export default function Hero() {
             care. Healthier air, lower energy bills, and a safer home — guaranteed.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <a href="#contact" className="btn-primary text-base">
+            <a href="#contact" className="btn-primary min-h-11 w-full text-base sm:w-auto">
               Get a Free Quote
             </a>
             {/* TODO: replace with real business phone number */}
-            <a href={PHONE_HREF} className="btn-secondary gap-2 text-base">
+            <a href={PHONE_HREF} className="btn-secondary min-h-11 w-full gap-2 text-base sm:w-auto">
               <Phone className="h-4 w-4" aria-hidden="true" />
               Call Now
             </a>

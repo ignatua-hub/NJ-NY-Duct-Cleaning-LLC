@@ -52,7 +52,7 @@ export default function BeforeAfterGallery() {
                 role="tab"
                 aria-selected={active}
                 onClick={() => setFilter(tab)}
-                className={`rounded-pill px-4 py-2 text-sm font-semibold transition ${
+                className={`inline-flex min-h-11 items-center rounded-pill px-4 text-sm font-semibold transition ${
                   active
                     ? "bg-blue-gradient text-white shadow-glow"
                     : "border border-white/15 text-brand-muted hover:border-white/30 hover:text-white"

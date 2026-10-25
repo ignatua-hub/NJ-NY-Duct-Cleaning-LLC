@@ -31,7 +31,7 @@ function PhotoOrPlaceholder({
 
   if (failed) {
     return (
-      <div className="flex h-full w-full items-center justify-center bg-[#0A0F1A] text-sm font-medium text-brand-muted">
+      <div className="flex h-full w-full items-end justify-center bg-[#0A0F1A] px-4 pb-4 text-center text-base font-medium text-brand-muted">
         Add photo
       </div>
     );
@@ -58,8 +58,39 @@ export default function BeforeAfterSlider({
 }: BeforeAfterSliderProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState(50);
+  const [draggingUi, setDraggingUi] = useState(false);
   const dragging = useRef(false);
   const introPlayed = useRef(false);
+  const scrollLock = useRef<{ x: number; y: number } | null>(null);
+
+  const stopScrollLock = useCallback(() => {
+    const lock = scrollLock.current;
+    scrollLock.current = null;
+    document.documentElement.style.overflow = "";
+    document.body.style.overflow = "";
+    if (lock) window.scrollTo(lock.x, lock.y);
+  }, []);
+
+  useEffect(() => {
+    const blockMove = (event: TouchEvent) => {
+      if (!dragging.current) return;
+      event.preventDefault();
+    };
+    const blockScroll = () => {
+      const lock = scrollLock.current;
+      if (!lock || !dragging.current) return;
+      if (window.scrollX !== lock.x || window.scrollY !== lock.y) {
+        window.scrollTo(lock.x, lock.y);
+      }
+    };
+    window.addEventListener("touchmove", blockMove, { passive: false });
+    window.addEventListener("scroll", blockScroll);
+    return () => {
+      window.removeEventListener("touchmove", blockMove);
+      window.removeEventListener("scroll", blockScroll);
+      stopScrollLock();
+    };
+  }, [stopScrollLock]);
 
   const updateFromClientX = useCallback((clientX: number) => {
     const el = containerRef.current;
@@ -72,17 +103,24 @@ export default function BeforeAfterSlider({
 
   const onPointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
     dragging.current = true;
+    setDraggingUi(true);
+    scrollLock.current = { x: window.scrollX, y: window.scrollY };
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
     e.currentTarget.setPointerCapture(e.pointerId);
     updateFromClientX(e.clientX);
   };
 
   const onPointerMove = (e: ReactPointerEvent<HTMLDivElement>) => {
     if (!dragging.current) return;
+    e.preventDefault();
     updateFromClientX(e.clientX);
   };
 
   const onPointerUp = (e: ReactPointerEvent<HTMLDivElement>) => {
     dragging.current = false;
+    setDraggingUi(false);
+    stopScrollLock();
     if (e.currentTarget.hasPointerCapture(e.pointerId)) {
       e.currentTarget.releasePointerCapture(e.pointerId);
     }
@@ -134,8 +172,8 @@ export default function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className="relative aspect-[4/3] w-full touch-pan-y overflow-hidden rounded-card border border-white/10 bg-brand-alt md:aspect-[16/10]"
-      style={{ touchAction: "pan-y" }}
+      className="relative aspect-[4/3] w-full overflow-hidden rounded-card border border-white/10 bg-brand-alt md:aspect-[16/10]"
+      style={{ touchAction: draggingUi ? "none" : "pan-y" }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
@@ -167,11 +205,11 @@ export default function BeforeAfterSlider({
       </div>
 
       {/* Labels */}
-      <span className="pointer-events-none absolute left-3 top-3 z-20 inline-flex items-center gap-1.5 rounded-pill bg-black/75 px-3 py-1 text-[11px] font-semibold tracking-wide text-white">
+      <span className="pointer-events-none absolute left-3 top-3 z-20 inline-flex items-center gap-1.5 rounded-pill bg-black/75 px-3 py-1 text-xs font-semibold tracking-wide text-white">
         <span className="h-1.5 w-1.5 rounded-full bg-brand-cyan" aria-hidden="true" />
         BEFORE
       </span>
-      <span className="pointer-events-none absolute right-3 top-3 z-20 inline-flex items-center gap-1.5 rounded-pill bg-black/75 px-3 py-1 text-[11px] font-semibold tracking-wide text-white">
+      <span className="pointer-events-none absolute right-3 top-3 z-20 inline-flex items-center gap-1.5 rounded-pill bg-black/75 px-3 py-1 text-xs font-semibold tracking-wide text-white">
         <span className="h-1.5 w-1.5 rounded-full bg-brand-cyan" aria-hidden="true" />
         AFTER
       </span>

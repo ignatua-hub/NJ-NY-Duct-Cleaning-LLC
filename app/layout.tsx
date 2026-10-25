@@ -87,7 +87,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${heading.variable} ${body.variable}`}>
-      <body className="min-h-screen bg-black font-body text-white antialiased">
+      <body className="min-h-screen bg-black pb-28 font-body text-white antialiased md:pb-0">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

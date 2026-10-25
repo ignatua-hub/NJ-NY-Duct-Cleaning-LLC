@@ -69,7 +69,7 @@ export default function WhyChooseUs() {
                   <h3 className="font-heading text-xl font-extrabold italic text-white">
                     {reason.title}
                   </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-brand-muted">
+                  <p className="mt-2 text-base leading-relaxed text-brand-muted">
                     {reason.text}
                   </p>
                 </article>

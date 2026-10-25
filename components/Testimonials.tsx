@@ -49,7 +49,7 @@ export default function Testimonials() {
                     />
                   ))}
                 </div>
-                <p className="flex-1 text-sm leading-relaxed text-brand-muted">
+                <p className="flex-1 text-base leading-relaxed text-brand-muted">
                   &ldquo;{review.text}&rdquo;
                 </p>
                 <footer className="mt-4 text-sm font-semibold text-white">
