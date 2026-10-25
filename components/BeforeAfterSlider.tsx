@@ -202,15 +202,6 @@ export default function BeforeAfterSlider({
         />
       </div>
 
-      <span className="pointer-events-none absolute left-3 top-3 z-20 inline-flex items-center gap-1.5 rounded-pill bg-black/75 px-3 py-1 text-xs font-semibold tracking-wide text-white">
-        <span className="h-1.5 w-1.5 rounded-full bg-brand-cyan" aria-hidden="true" />
-        AFTER
-      </span>
-      <span className="pointer-events-none absolute right-3 top-3 z-20 inline-flex items-center gap-1.5 rounded-pill bg-black/75 px-3 py-1 text-xs font-semibold tracking-wide text-white">
-        <span className="h-1.5 w-1.5 rounded-full bg-brand-cyan" aria-hidden="true" />
-        BEFORE
-      </span>
-
       {/* Divider + handle */}
       <div
         className="pointer-events-none absolute inset-y-0 z-30 w-[3px] -translate-x-1/2 bg-white"
