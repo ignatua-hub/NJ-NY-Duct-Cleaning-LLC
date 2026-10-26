@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Star } from "lucide-react";
 import FadeIn from "./FadeIn";
 
@@ -24,8 +25,22 @@ const REVIEWS = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-black py-16 sm:py-20 lg:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-black py-16 sm:py-20 lg:py-24">
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[760px] md:inset-y-0 md:h-auto"
+        aria-hidden="true"
+      >
+        <Image
+          src="/images/testimonials-bg.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-[20%_center] md:object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/25 to-black md:to-black/60" />
+        <div className="absolute inset-0 hidden bg-gradient-to-r from-black/60 via-black/20 to-transparent md:block" />
+      </div>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <h2 className="font-heading text-4xl font-extrabold italic tracking-tight sm:text-5xl">
             <span className="text-silver">What Neighbors </span>
@@ -39,7 +54,7 @@ export default function Testimonials() {
         <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
           {REVIEWS.map((review, index) => (
             <FadeIn key={review.name} delay={index * 0.05}>
-              <blockquote className="card-surface flex h-full flex-col p-6">
+              <blockquote className="card-surface flex h-full flex-col !bg-[#0F1624]/75 p-6 backdrop-blur-sm">
                 <div className="mb-3 flex gap-1" aria-label="5 out of 5 stars">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star
