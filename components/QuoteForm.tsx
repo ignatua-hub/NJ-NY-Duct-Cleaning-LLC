@@ -8,6 +8,7 @@ import {
   type TextareaHTMLAttributes,
   type ReactNode,
 } from "react";
+import Image from "next/image";
 import { BadgeCheck, Clock, Mail, Phone } from "lucide-react";
 import FadeIn from "./FadeIn";
 import { HOURS_DISPLAY, PHONE_DISPLAY, PHONE_HREF } from "@/lib/contact";
@@ -134,8 +135,24 @@ export default function QuoteForm() {
   };
 
   return (
-    <section id="contact" className="bg-brand-alt py-16 sm:py-20 lg:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section
+      id="contact"
+      className="relative overflow-hidden bg-brand-alt py-16 sm:py-20 lg:py-24"
+    >
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[760px] md:inset-y-0 md:h-auto"
+        aria-hidden="true"
+      >
+        <Image
+          src="/images/service-area-bg.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-[56%_center] md:object-[center_40%]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1A]/55 via-[#0A0F1A]/45 to-[#0A0F1A] md:to-[#0A0F1A]/80" />
+      </div>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <h2 className="font-heading text-4xl font-extrabold italic tracking-tight sm:text-5xl">
             <span className="text-silver">Get Your </span>
@@ -150,7 +167,7 @@ export default function QuoteForm() {
           <FadeIn className="lg:col-span-3">
             <form
               onSubmit={onSubmit}
-              className="card-surface grid grid-cols-1 gap-4 p-6 sm:grid-cols-2 sm:p-8"
+              className="card-surface grid grid-cols-1 gap-4 !bg-[#0F1624]/85 p-6 backdrop-blur-sm sm:grid-cols-2 sm:p-8"
               noValidate
             >
               {field("fullName", "Full Name", {
@@ -217,7 +234,7 @@ export default function QuoteForm() {
           </FadeIn>
 
           <FadeIn delay={0.08} className="lg:col-span-2">
-            <aside className="card-surface flex h-full flex-col gap-6 p-6 sm:p-8">
+            <aside className="card-surface flex h-full flex-col gap-6 !bg-[#0F1624]/85 p-6 backdrop-blur-sm sm:p-8">
               <div className="inline-flex w-fit items-center gap-2 rounded-pill bg-blue-gradient px-3 py-1.5 text-xs font-bold uppercase tracking-wide text-white shadow-glow">
                 <BadgeCheck className="h-4 w-4" aria-hidden="true" />
                 Free estimates
