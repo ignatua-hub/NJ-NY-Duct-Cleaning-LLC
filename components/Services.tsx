@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Flame, AirVent, Wind, Wrench } from "lucide-react";
 import FadeIn from "./FadeIn";
 
@@ -60,8 +61,24 @@ const SERVICES = [
 
 export default function Services() {
   return (
-    <section id="services" className="bg-brand-alt py-16 sm:py-20 lg:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section
+      id="services"
+      className="relative overflow-hidden bg-brand-alt py-16 sm:py-20 lg:py-24"
+    >
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[720px] md:inset-y-0 md:h-auto"
+        aria-hidden="true"
+      >
+        <Image
+          src="/images/services-bg.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-[70%_center] md:object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1A]/55 via-[#0A0F1A]/45 to-[#0A0F1A] md:to-[#0A0F1A]/80" />
+      </div>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <h2 className="font-heading text-4xl font-extrabold italic tracking-tight sm:text-5xl">
             <span className="text-silver">Our </span>
@@ -78,7 +95,7 @@ export default function Services() {
             const Icon = service.icon;
             return (
               <FadeIn key={service.id} delay={index * 0.05}>
-                <article className="card-surface group h-full p-6 transition hover:shadow-glow sm:p-8">
+                <article className="card-surface group h-full !bg-[#0F1624]/85 p-6 backdrop-blur-sm transition hover:shadow-glow sm:p-8">
                   <div className="mb-4 inline-flex rounded-full bg-blue-gradient p-3 text-white shadow-glow">
                     <Icon className="h-6 w-6" aria-hidden="true" />
                   </div>
