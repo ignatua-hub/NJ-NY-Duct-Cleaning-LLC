@@ -26,8 +26,8 @@ export const beforeAfterProjects: BeforeAfterProject[] = [
     id: "job-1",
     title: "Whole-Home Duct Refresh — Paramus",
     service: "Air Duct",
-    beforeSrc: "/images/before-after/job-1-before.jpg",
-    afterSrc: "/images/before-after/job-1-after.jpg",
+    beforeSrc: "/images/before-after/air-duct/job-1-before.jpg",
+    afterSrc: "/images/before-after/air-duct/job-1-after.jpg",
   },
   {
     id: "job-2",
