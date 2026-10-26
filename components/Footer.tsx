@@ -1,5 +1,6 @@
 import BrandLogo from "./BrandLogo";
 import Skyline from "./Skyline";
+import SectionBackdrop, { SECTION_COLORS } from "./SectionBackdrop";
 import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/contact";
 
 const FOOTER_LINKS = [
@@ -24,7 +25,8 @@ const EMAIL_HREF = "mailto:info@example.com";
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-black">
+    <footer className="relative overflow-hidden bg-black">
+      <SectionBackdrop color={SECTION_COLORS.black} fadeFrom={SECTION_COLORS.alt} />
       <Skyline
         className="pointer-events-none absolute bottom-0 left-0 right-0 w-full"
         opacity={0.1}

@@ -1,6 +1,4 @@
-"use client";
-
-import Image from "next/image";
+import SectionBackdrop, { SECTION_COLORS } from "./SectionBackdrop";
 import { Flame, AirVent, Wind, Wrench } from "lucide-react";
 import FadeIn from "./FadeIn";
 
@@ -65,19 +63,16 @@ export default function Services() {
       id="services"
       className="relative overflow-hidden bg-brand-alt py-16 sm:py-20 lg:py-24"
     >
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[720px] md:inset-y-0 md:h-auto"
-        aria-hidden="true"
-      >
-        <Image
-          src="/images/services-bg.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover object-[70%_center] md:object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1A]/55 via-[#0A0F1A]/45 to-[#0A0F1A] md:to-[#0A0F1A]/80" />
-      </div>
+      <SectionBackdrop
+        src="/images/backgrounds/services.webp"
+        imageClassName="object-[70%_center] md:object-center"
+        color={SECTION_COLORS.alt}
+        fadeFrom={SECTION_COLORS.black}
+        priority
+        overlay={
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1A]/55 via-[#0A0F1A]/45 to-[#0A0F1A] md:to-[#0A0F1A]/80" />
+        }
+      />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <h2 className="font-heading text-4xl font-extrabold italic tracking-tight sm:text-5xl">
@@ -102,7 +97,7 @@ export default function Services() {
                   <h3 className="font-heading text-2xl font-extrabold italic text-white">
                     {service.title}
                   </h3>
-                  <p className="mt-1 text-sm font-medium text-brand-cyan">{service.tagline}</p>
+                  <p className="mt-1 text-base font-medium text-brand-cyan">{service.tagline}</p>
                   <p className="mt-4 text-base leading-relaxed text-brand-muted">{service.text}</p>
                   <ul className="mt-5 space-y-2">
                     {service.bullets.map((bullet) => (

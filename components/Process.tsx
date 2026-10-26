@@ -1,6 +1,5 @@
-"use client";
-
 import FadeIn from "./FadeIn";
+import SectionBackdrop, { SECTION_COLORS } from "./SectionBackdrop";
 
 const STEPS = [
   {
@@ -27,8 +26,9 @@ const STEPS = [
 
 export default function Process() {
   return (
-    <section id="process" className="bg-black py-16 sm:py-20 lg:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="process" className="relative overflow-hidden bg-black py-16 sm:py-20 lg:py-24">
+      <SectionBackdrop color={SECTION_COLORS.black} fadeFrom={SECTION_COLORS.alt} />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <h2 className="font-heading text-4xl font-extrabold italic tracking-tight sm:text-5xl">
             <span className="text-silver">How It </span>
@@ -48,8 +48,8 @@ export default function Process() {
 
           <ol className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {STEPS.map((step, index) => (
-              <FadeIn key={step.number} delay={index * 0.06}>
-                <li className="relative flex flex-col items-start">
+              <li key={step.number}>
+                <FadeIn delay={index * 0.06} className="relative flex flex-col items-start">
                   <span className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-blue-gradient font-heading text-2xl font-extrabold italic text-white shadow-glow">
                     {step.number}
                   </span>
@@ -59,8 +59,8 @@ export default function Process() {
                   <p className="mt-2 text-base leading-relaxed text-brand-muted">
                     {step.text}
                   </p>
-                </li>
-              </FadeIn>
+                </FadeIn>
+              </li>
             ))}
           </ol>
         </div>

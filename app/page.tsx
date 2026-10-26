@@ -9,7 +9,6 @@ import Testimonials from "@/components/Testimonials";
 import QuoteForm from "@/components/QuoteForm";
 import Footer from "@/components/Footer";
 import StickyCallButton from "@/components/StickyCallButton";
-import AirflowDivider from "@/components/AirflowDivider";
 
 export default function HomePage() {
   return (
@@ -17,19 +16,12 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
-        <AirflowDivider />
         <Services />
-        <AirflowDivider />
         <BeforeAfterGallery />
-        <AirflowDivider />
         <WhyChooseUs />
-        <AirflowDivider />
         <Process />
-        <AirflowDivider />
         <ServiceArea />
-        <AirflowDivider />
         <Testimonials />
-        <AirflowDivider />
         <QuoteForm />
       </main>
       <Footer />

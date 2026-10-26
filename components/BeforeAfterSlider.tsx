@@ -12,24 +12,15 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type BeforeAfterSliderProps = {
-  beforeSrc: string;
-  afterSrc: string;
+  beforeSrc?: string;
+  afterSrc?: string;
   title: string;
-  priority?: boolean;
 };
 
-function PhotoOrPlaceholder({
-  src,
-  alt,
-  priority,
-}: {
-  src: string;
-  alt: string;
-  priority?: boolean;
-}) {
+function PhotoOrPlaceholder({ src, alt }: { src?: string; alt: string }) {
   const [failed, setFailed] = useState(false);
 
-  if (failed) {
+  if (!src || failed) {
     return (
       <div className="flex h-full w-full items-end justify-center bg-[#0A0F1A] px-4 pb-4 text-center text-base font-medium text-brand-muted">
         Add photo
@@ -42,20 +33,15 @@ function PhotoOrPlaceholder({
       src={src}
       alt={alt}
       fill
-      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+      sizes="(max-width: 767px) calc(100vw - 2rem), (max-width: 1023px) 45vw, 400px"
       className="object-cover"
-      priority={priority}
+      loading="lazy"
       onError={() => setFailed(true)}
     />
   );
 }
 
-export default function BeforeAfterSlider({
-  beforeSrc,
-  afterSrc,
-  title,
-  priority = false,
-}: BeforeAfterSliderProps) {
+export default function BeforeAfterSlider({ beforeSrc, afterSrc, title }: BeforeAfterSliderProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState(50);
   const [draggingUi, setDraggingUi] = useState(false);
@@ -190,7 +176,6 @@ export default function BeforeAfterSlider({
         <PhotoOrPlaceholder
           src={beforeSrc}
           alt={`${title} — before cleaning`}
-          priority={priority}
         />
       </div>
 
@@ -198,7 +183,6 @@ export default function BeforeAfterSlider({
         <PhotoOrPlaceholder
           src={afterSrc}
           alt={`${title} — after cleaning`}
-          priority={priority}
         />
       </div>
 

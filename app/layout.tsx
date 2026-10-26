@@ -1,19 +1,25 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Barlow_Condensed, Inter } from "next/font/google";
 import "./globals.css";
 import { HOURS_CLOSE, HOURS_OPEN, OPEN_DAYS, PHONE_E164 } from "@/lib/contact";
+import { SITE_URL } from "@/lib/site";
 
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  colorScheme: "dark",
+};
+
+// Headings only ever use 800 italic; loading just that file keeps the hero paint fast.
 const heading = Barlow_Condensed({
   subsets: ["latin"],
-  weight: ["700", "800"],
-  style: ["normal", "italic"],
+  weight: "800",
+  style: "italic",
   variable: "--font-heading",
   display: "swap",
 });
 
 const body = Inter({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
   variable: "--font-body",
   display: "swap",
 });
@@ -24,11 +30,14 @@ const SITE_DESCRIPTION =
   "NJ&NY Duct Cleaning LLC — New Jersey's trusted experts in air duct cleaning, dryer vent cleaning, chimney cleaning, and HVAC maintenance. Healthier air, lower energy bills, safer homes.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: SITE_TITLE,
   description: SITE_DESCRIPTION,
+  alternates: { canonical: "/" },
   openGraph: {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
+    url: "/",
     type: "website",
     locale: "en_US",
     siteName: "NJ&NY Duct Cleaning LLC",
@@ -49,7 +58,11 @@ const localBusinessJsonLd = {
   "@type": "LocalBusiness",
   name: "NJ&NY Duct Cleaning LLC",
   description: SITE_DESCRIPTION,
+  url: SITE_URL,
+  logo: `${SITE_URL}/images/logo.webp`,
+  image: `${SITE_URL}/opengraph-image.jpg`,
   telephone: PHONE_E164,
+  priceRange: "$$",
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",

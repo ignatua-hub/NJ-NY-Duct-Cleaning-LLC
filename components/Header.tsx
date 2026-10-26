@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import BrandLogo from "./BrandLogo";
 import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/contact";
@@ -16,6 +16,15 @@ const NAV_LINKS = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-md">
@@ -41,11 +50,11 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          <a href={PHONE_HREF} className="btn-secondary gap-2 !px-4 !py-2 text-sm">
+          <a href={PHONE_HREF} className="btn-secondary min-h-11 gap-2 !px-4 !py-2 text-sm">
             <Phone className="h-4 w-4" aria-hidden="true" />
             {PHONE_DISPLAY}
           </a>
-          <a href="#contact" className="btn-primary !px-4 !py-2 text-sm">
+          <a href="#contact" className="btn-primary min-h-11 !px-4 !py-2 text-sm">
             Free Quote
           </a>
         </div>

@@ -1,8 +1,5 @@
-"use client";
-
 import { CheckCircle2, Phone } from "lucide-react";
 import Skyline from "./Skyline";
-import FadeIn from "./FadeIn";
 import { PHONE_HREF } from "@/lib/contact";
 
 const TRUST_BADGES = [
@@ -48,7 +45,7 @@ export default function Hero() {
       </svg>
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <FadeIn>
+        <div>
           <h1 className="font-heading text-4xl font-extrabold italic leading-[1.05] tracking-tight min-[390px]:text-5xl sm:text-6xl lg:text-7xl">
             <span className="text-silver">Breathe Cleaner. </span>
             <span className="text-blue-gradient">Live Safer.</span>
@@ -70,14 +67,14 @@ export default function Hero() {
             {TRUST_BADGES.map((badge) => (
               <li
                 key={badge}
-                className="flex items-center gap-2 text-sm font-medium text-white/90"
+                className="flex items-center gap-2 text-base font-medium text-white/90"
               >
                 <CheckCircle2 className="h-5 w-5 shrink-0 text-brand-cyan" aria-hidden="true" />
                 {badge}
               </li>
             ))}
           </ul>
-        </FadeIn>
+        </div>
       </div>
     </section>
   );

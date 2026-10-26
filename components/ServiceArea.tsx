@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
-import Image from "next/image";
 import FadeIn from "./FadeIn";
+import SectionBackdrop, { SECTION_COLORS } from "./SectionBackdrop";
 import NewJerseyMap from "./NewJerseyMap";
 import ServiceAreaInteractive from "./ServiceAreaInteractive";
 
@@ -19,12 +19,12 @@ export default function ServiceArea() {
       id="service-area"
       className="relative overflow-hidden bg-brand-alt py-16 sm:py-20 lg:py-24"
     >
-      {showBackground && (
-        <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-          <Image src={BACKGROUND_SRC} alt="" fill sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-black/80" />
-        </div>
-      )}
+      <SectionBackdrop
+        src={showBackground ? BACKGROUND_SRC : undefined}
+        color={SECTION_COLORS.alt}
+        fadeFrom={SECTION_COLORS.black}
+        overlay={showBackground ? <div className="absolute inset-0 bg-black/80" /> : undefined}
+      />
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-x-12 px-4 sm:px-6 lg:grid-cols-2 lg:px-8">
         <FadeIn className="lg:col-start-1 lg:row-start-1">

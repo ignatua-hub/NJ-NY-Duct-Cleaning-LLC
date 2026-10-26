@@ -1,5 +1,3 @@
-"use client";
-
 import {
   BadgeCheck,
   CalendarClock,
@@ -8,7 +6,7 @@ import {
   Sparkles,
   Wallet,
 } from "lucide-react";
-import Image from "next/image";
+import SectionBackdrop, { SECTION_COLORS } from "./SectionBackdrop";
 import FadeIn from "./FadeIn";
 
 const REASONS = [
@@ -50,19 +48,15 @@ export default function WhyChooseUs() {
       id="why-us"
       className="relative overflow-hidden bg-brand-alt py-16 sm:py-20 lg:py-24"
     >
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[760px] md:inset-y-0 md:h-auto"
-        aria-hidden="true"
-      >
-        <Image
-          src="/images/why-us-bg.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover object-[35%_center] md:object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1A]/15 via-[#0A0F1A]/10 to-[#0A0F1A] md:to-[#0A0F1A]/50" />
-      </div>
+      <SectionBackdrop
+        src="/images/backgrounds/why-us.webp"
+        imageClassName="object-[35%_center] md:object-center"
+        color={SECTION_COLORS.alt}
+        fadeFrom={SECTION_COLORS.black}
+        overlay={
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0A0F1A]/15 via-[#0A0F1A]/10 to-[#0A0F1A] md:to-[#0A0F1A]/50" />
+        }
+      />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <h2 className="font-heading text-4xl font-extrabold italic tracking-tight sm:text-5xl">

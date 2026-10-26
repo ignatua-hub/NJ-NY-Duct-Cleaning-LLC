@@ -9,7 +9,7 @@ type BrandLogoProps = {
 };
 
 /**
- * Uses /public/images/logo.png when present.
+ * Uses /public/images/logo.webp when present.
  * Falls back to an SVG brand mark matching the dark electric-blue brand.
  */
 export default function BrandLogo({ className = "", height = 48 }: BrandLogoProps) {
@@ -58,12 +58,12 @@ export default function BrandLogo({ className = "", height = 48 }: BrandLogoProp
 
   return (
     <Image
-      src="/images/logo.png"
+      src="/images/logo.webp"
       alt="NJ&NY Duct Cleaning LLC"
       width={width}
       height={height}
       className={`object-contain ${className}`}
-      style={{ height, width: "auto" }}
+      sizes={`${width}px`}
       priority
       onError={() => setFailed(true)}
     />

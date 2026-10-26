@@ -31,7 +31,8 @@ const config: Config = {
         glow: "0 0 40px rgba(30,144,255,0.25)",
       },
       backgroundImage: {
-        "blue-gradient": "linear-gradient(135deg, #29B6FF 0%, #0A5BFF 100%)",
+        // Used behind white text, so it is darkened from the #29B6FF→#0A5BFF brand gradient to keep 4.5:1 contrast.
+        "blue-gradient": "linear-gradient(135deg, #1570D6 0%, #0A4BD6 100%)",
         "silver-gradient": "linear-gradient(180deg, #FFFFFF 0%, #B8C0CC 100%)",
       },
     },

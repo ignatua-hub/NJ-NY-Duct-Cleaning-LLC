@@ -51,7 +51,7 @@ export default function ServiceAreaInteractive() {
                 type="button"
                 aria-pressed={active}
                 onClick={() => setActiveCounty(active ? null : county)}
-                className={`inline-flex min-h-11 items-center rounded-pill border px-4 text-sm font-medium transition hover:border-transparent hover:bg-blue-gradient hover:text-white hover:shadow-glow ${
+                className={`inline-flex min-h-11 items-center rounded-pill border px-4 text-base font-medium transition hover:border-transparent hover:bg-blue-gradient hover:text-white hover:shadow-glow ${
                   active
                     ? "border-transparent bg-blue-gradient text-white shadow-glow"
                     : "border-white/10 bg-[#0F1624] text-white/90"
@@ -65,7 +65,7 @@ export default function ServiceAreaInteractive() {
       </ul>
 
       <form onSubmit={onCheck} className="mt-8 max-w-xl" noValidate>
-        <label htmlFor="zip-check" className="block text-sm font-medium text-white">
+        <label htmlFor="zip-check" className="block text-base font-medium text-white">
           Check your ZIP code
         </label>
         <div className="mt-2 flex flex-col gap-3 sm:flex-row">
@@ -96,17 +96,17 @@ export default function ServiceAreaInteractive() {
         <div aria-live="polite">
           {result === "covered" && (
             <div className="mt-4 rounded-card border border-emerald-400/30 bg-emerald-500/10 p-4">
-              <p className="flex items-start gap-2 text-sm font-medium text-emerald-300">
+              <p className="flex items-start gap-2 text-base font-medium text-emerald-300">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
                 Great news - we serve your area! Call {PHONE_DISPLAY} or request a free quote.
               </p>
-              <a href="#contact" className="btn-primary mt-3 min-h-11 text-sm">
+              <a href="#contact" className="btn-primary mt-3 min-h-11 text-base">
                 Get a Free Quote
               </a>
             </div>
           )}
           {result === "unknown" && (
-            <p className="mt-4 rounded-card border border-white/10 bg-white/5 p-4 text-sm text-brand-muted">
+            <p className="mt-4 rounded-card border border-white/10 bg-white/5 p-4 text-base text-brand-muted">
               We may not cover this ZIP code yet. Call us and we will check.
             </p>
           )}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import Image from "next/image";
+import SectionBackdrop, { SECTION_COLORS } from "./SectionBackdrop";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   beforeAfterProjects,
@@ -31,19 +31,14 @@ export default function BeforeAfterGallery() {
       id="before-after"
       className="relative overflow-hidden bg-black py-16 sm:py-20 lg:py-24"
     >
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[900px] md:inset-y-0 md:h-auto"
-        aria-hidden="true"
-      >
-        <Image
-          src="/images/gallery-bg.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black md:to-black/75" />
-      </div>
+      <SectionBackdrop
+        src="/images/backgrounds/before-after.webp"
+        color={SECTION_COLORS.black}
+        fadeFrom={SECTION_COLORS.alt}
+        overlay={
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black md:to-black/75" />
+        }
+      />
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <h2 className="font-heading text-4xl font-extrabold italic tracking-tight sm:text-5xl">
@@ -69,7 +64,7 @@ export default function BeforeAfterGallery() {
                 role="tab"
                 aria-selected={active}
                 onClick={() => setFilter(tab)}
-                className={`inline-flex min-h-11 items-center rounded-pill px-4 text-sm font-semibold transition ${
+                className={`inline-flex min-h-11 items-center rounded-pill px-4 text-base font-semibold transition ${
                   active
                     ? "bg-blue-gradient text-white shadow-glow"
                     : "border border-white/15 text-brand-muted hover:border-white/30 hover:text-white"
@@ -86,7 +81,7 @@ export default function BeforeAfterGallery() {
           className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
         >
           <AnimatePresence mode="popLayout">
-            {projects.map((project, index) => (
+            {projects.map((project) => (
               <motion.article
                 key={project.id}
                 layout
@@ -100,10 +95,9 @@ export default function BeforeAfterGallery() {
                   beforeSrc={project.beforeSrc}
                   afterSrc={project.afterSrc}
                   title={project.title}
-                  priority={index === 0}
                 />
                 <div className="mt-3 flex px-1">
-                  <span className="rounded-pill border border-white/10 bg-white/5 px-2.5 py-0.5 text-xs font-medium text-brand-cyan">
+                  <span className="rounded-pill border border-white/10 bg-white/5 px-3 py-0.5 text-sm font-medium text-brand-cyan">
                     {project.service}
                   </span>
                 </div>
