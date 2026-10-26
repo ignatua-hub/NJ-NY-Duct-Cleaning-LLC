@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   beforeAfterProjects,
@@ -26,8 +27,24 @@ export default function BeforeAfterGallery() {
   }, [filter]);
 
   return (
-    <section id="before-after" className="bg-black py-16 sm:py-20 lg:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section
+      id="before-after"
+      className="relative overflow-hidden bg-black py-16 sm:py-20 lg:py-24"
+    >
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[900px] md:inset-y-0 md:h-auto"
+        aria-hidden="true"
+      >
+        <Image
+          src="/images/gallery-bg.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black md:to-black/75" />
+      </div>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <h2 className="font-heading text-4xl font-extrabold italic tracking-tight sm:text-5xl">
             <span className="text-silver">See the </span>
