@@ -54,8 +54,8 @@ export const beforeAfterProjects: BeforeAfterProject[] = [
     id: "job-5",
     title: "Pet-Dander Duct Deep Clean — Newark",
     service: "Air Duct",
-    beforeSrc: "/images/before-after/job-5-before.jpg",
-    afterSrc: "/images/before-after/job-5-after.jpg",
+    beforeSrc: "/images/before-after/air-duct/job-5-before.jpg",
+    afterSrc: "/images/before-after/air-duct/job-5-after.jpg",
   },
   {
     id: "job-6",
