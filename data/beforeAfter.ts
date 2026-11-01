@@ -40,8 +40,8 @@ export const beforeAfterProjects: BeforeAfterProject[] = [
     id: "job-3",
     title: "Creosote Cleanup — Princeton",
     service: "Chimney",
-    beforeSrc: "/images/before-after/job-3-before.jpg",
-    afterSrc: "/images/before-after/job-3-after.jpg",
+    beforeSrc: "/images/before-after/chimney/job-3-before.jpg",
+    afterSrc: "/images/before-after/chimney/job-3-after.jpg",
   },
   {
     id: "job-4",
