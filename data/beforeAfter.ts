@@ -61,7 +61,7 @@ export const beforeAfterProjects: BeforeAfterProject[] = [
     id: "job-6",
     title: "Exterior Exhaust Restore — Toms River",
     service: "Dryer Vent",
-    beforeSrc: "/images/before-after/job-6-before.jpg",
-    afterSrc: "/images/before-after/job-6-after.jpg",
+    beforeSrc: "/images/before-after/dryer-vent/job-6-before.jpg",
+    afterSrc: "/images/before-after/dryer-vent/job-6-after.jpg",
   },
 ];
