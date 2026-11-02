@@ -8,6 +8,7 @@ import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/contact";
 const NAV_LINKS = [
   { href: "#services", label: "Services" },
   { href: "#before-after", label: "Before & After" },
+  { href: "#homelux", label: "HomeLux" },
   { href: "#why-us", label: "Why Us" },
   { href: "#process", label: "Process" },
   { href: "#service-area", label: "Service Area" },
@@ -37,7 +38,7 @@ export default function Header() {
           <BrandLogo height={64} />
         </a>
 
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary">
+        <nav className="hidden items-center gap-5 whitespace-nowrap xl:flex 2xl:gap-6" aria-label="Primary">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
@@ -61,7 +62,7 @@ export default function Header() {
 
         <button
           type="button"
-          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-pill border border-white/15 text-white lg:hidden"
+          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-pill border border-white/15 text-white xl:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -74,7 +75,7 @@ export default function Header() {
       {open && (
         <div
           id="mobile-nav"
-          className="border-t border-white/10 bg-black/95 px-4 py-4 lg:hidden"
+          className="border-t border-white/10 bg-black/95 px-4 py-4 xl:hidden"
         >
           <nav className="flex flex-col gap-3" aria-label="Mobile">
             {NAV_LINKS.map((link) => (

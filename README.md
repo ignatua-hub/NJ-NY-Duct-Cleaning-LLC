@@ -48,5 +48,4 @@ Missing images show an “Add photo” placeholder. Register new jobs in `data/b
 ## Replace before launch
 
 - Email placeholders (`info@example.com`)
-- Real customer reviews in `components/Testimonials.tsx`
 - Real before/after job photos

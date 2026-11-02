@@ -6,6 +6,7 @@ import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/contact";
 const FOOTER_LINKS = [
   { href: "#services", label: "Services" },
   { href: "#before-after", label: "Before & After" },
+  { href: "#homelux", label: "HomeLux" },
   { href: "#why-us", label: "Why Us" },
   { href: "#process", label: "Process" },
   { href: "#service-area", label: "Service Area" },
