@@ -47,8 +47,8 @@ export const beforeAfterProjects: BeforeAfterProject[] = [
     id: "job-4",
     title: "Seasonal HVAC Tune-Up — Edison",
     service: "HVAC",
-    beforeSrc: "/images/before-after/job-4-before.jpg",
-    afterSrc: "/images/before-after/job-4-after.jpg",
+    beforeSrc: "/images/before-after/hvac/job-4-before.jpg",
+    afterSrc: "/images/before-after/hvac/job-4-after.jpg",
   },
   {
     id: "job-5",
