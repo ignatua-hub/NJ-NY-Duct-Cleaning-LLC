@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import Image from "next/image";
-import { BadgeCheck, Clock, Mail, Phone } from "lucide-react";
+import { BadgeCheck, Clock, Phone } from "lucide-react";
 import FadeIn from "./FadeIn";
 import { HOURS_DISPLAY, PHONE_DISPLAY, PHONE_HREF } from "@/lib/contact";
 
@@ -19,10 +19,6 @@ const SERVICES = [
   "Chimney Cleaning",
   "HVAC Maintenance",
 ] as const;
-
-// TODO: replace with real business email
-const EMAIL_DISPLAY = "info@example.com";
-const EMAIL_HREF = "mailto:info@example.com";
 
 type FormState = {
   fullName: string;
@@ -272,7 +268,7 @@ export default function QuoteForm() {
                   Prefer to talk?
                 </h3>
                 <p className="mt-2 text-sm text-brand-muted">
-                  Call or email — we typically respond the same day.
+                  Call — we typically respond the same day.
                 </p>
               </div>
 
@@ -286,20 +282,6 @@ export default function QuoteForm() {
                 <span>
                   <span className="block text-xs text-brand-muted">Phone</span>
                   <span className="font-semibold">{PHONE_DISPLAY}</span>
-                </span>
-              </a>
-
-              {/* TODO: replace with real business email */}
-              <a
-                href={EMAIL_HREF}
-                className="flex min-h-11 items-center gap-3 text-white transition hover:text-brand-cyan"
-              >
-                <span className="rounded-full bg-white/5 p-2.5 text-brand-cyan">
-                  <Mail className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <span>
-                  <span className="block text-xs text-brand-muted">Email</span>
-                  <span className="font-semibold">{EMAIL_DISPLAY}</span>
                 </span>
               </a>
 

@@ -18,10 +18,6 @@ const SERVICE_LINKS = [
   "HVAC Maintenance",
 ];
 
-// TODO: replace with real business email
-const EMAIL_DISPLAY = "info@example.com";
-const EMAIL_HREF = "mailto:info@example.com";
-
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-white/10 bg-black">
@@ -83,12 +79,6 @@ export default function Footer() {
               <li>
                 <a href={PHONE_HREF} className="flex min-h-11 items-center transition hover:text-white">
                   {PHONE_DISPLAY}
-                </a>
-              </li>
-              <li>
-                {/* TODO: replace with real business email */}
-                <a href={EMAIL_HREF} className="flex min-h-11 items-center transition hover:text-white">
-                  {EMAIL_DISPLAY}
                 </a>
               </li>
               <li className="flex min-h-11 items-center">Serving all of New Jersey</li>
