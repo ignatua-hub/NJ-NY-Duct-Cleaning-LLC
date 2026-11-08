@@ -31,6 +31,7 @@ type FormState = {
   cityZip: string;
   service: string;
   message: string;
+  website: string;
 };
 
 const INITIAL: FormState = {
@@ -40,6 +41,7 @@ const INITIAL: FormState = {
   cityZip: "",
   service: "",
   message: "",
+  website: "",
 };
 
 export default function QuoteForm() {
@@ -48,6 +50,7 @@ export default function QuoteForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
     "idle"
   );
+  const [serverError, setServerError] = useState("");
 
   const validate = (): boolean => {
     const next: Partial<Record<keyof FormState, string>> = {};
@@ -68,16 +71,28 @@ export default function QuoteForm() {
     e.preventDefault();
     if (!validate()) return;
     setStatus("submitting");
+    setServerError("");
     try {
       const res = await fetch("/api/quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      if (!res.ok) throw new Error("Request failed");
+      const data = (await res.json().catch(() => null)) as
+        | { ok?: boolean; error?: string }
+        | null;
+      if (!res.ok || !data?.ok) {
+        setServerError(
+          data?.error ||
+            `Something went wrong. Please call us at ${PHONE_DISPLAY}.`
+        );
+        setStatus("error");
+        return;
+      }
       setStatus("success");
       setForm(INITIAL);
     } catch {
+      setServerError(`Something went wrong. Please call us at ${PHONE_DISPLAY}.`);
       setStatus("error");
     }
   };
@@ -167,9 +182,20 @@ export default function QuoteForm() {
           <FadeIn className="lg:col-span-3">
             <form
               onSubmit={onSubmit}
-              className="card-surface grid grid-cols-1 gap-4 !bg-[#0F1624]/85 p-6 backdrop-blur-sm sm:grid-cols-2 sm:p-8"
+              className="relative card-surface grid grid-cols-1 gap-4 !bg-[#0F1624]/85 p-6 backdrop-blur-sm sm:grid-cols-2 sm:p-8"
               noValidate
             >
+              <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+                <label htmlFor="website">Website</label>
+                <input
+                  id="website"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={form.website}
+                  onChange={(e) => setForm((f) => ({ ...f, website: e.target.value }))}
+                />
+              </div>
               {field("fullName", "Full Name", {
                 placeholder: "Jane Doe",
                 autoComplete: "name",
@@ -226,7 +252,8 @@ export default function QuoteForm() {
                 )}
                 {status === "error" && (
                   <p className="mt-3 text-sm font-medium text-red-400" role="alert">
-                    Something went wrong. Please call us or try again.
+                    {serverError ||
+                      `Something went wrong. Please call us at ${PHONE_DISPLAY}.`}
                   </p>
                 )}
               </div>
