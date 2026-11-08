@@ -71,8 +71,6 @@ const localBusinessJsonLd = {
       closes: HOURS_CLOSE,
     },
   ],
-  // TODO: replace with real business email
-  email: "info@example.com",
   areaServed: {
     "@type": "State",
     name: "New Jersey",

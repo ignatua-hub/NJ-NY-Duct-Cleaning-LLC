@@ -43,9 +43,8 @@ Missing images show an “Add photo” placeholder. Register new jobs in `data/b
 
 ## Quote form API
 
-`POST /api/quote` validates and currently logs submissions to the server console. Connect email/CRM later (see TODO in `app/api/quote/route.ts`).
+`POST /api/quote` validates submissions and can send a Telegram notification when `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` are set.
 
 ## Replace before launch
 
-- Email placeholders (`info@example.com`)
 - Real before/after job photos

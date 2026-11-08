@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import SectionBackdrop, { SECTION_COLORS } from "./SectionBackdrop";
-import { BadgeCheck, Clock, Mail, Phone } from "lucide-react";
+import { BadgeCheck, Clock, Phone } from "lucide-react";
 import FadeIn from "./FadeIn";
 import { HOURS_DISPLAY, PHONE_DISPLAY, PHONE_HREF } from "@/lib/contact";
 
@@ -20,10 +20,6 @@ const SERVICES = [
   "HVAC Maintenance",
 ] as const;
 
-// TODO: replace with real business email
-const EMAIL_DISPLAY = "info@example.com";
-const EMAIL_HREF = "mailto:info@example.com";
-
 type FormState = {
   fullName: string;
   phone: string;
@@ -31,6 +27,7 @@ type FormState = {
   cityZip: string;
   service: string;
   message: string;
+  website: string;
 };
 
 const INITIAL: FormState = {
@@ -40,6 +37,7 @@ const INITIAL: FormState = {
   cityZip: "",
   service: "",
   message: "",
+  website: "",
 };
 
 export default function QuoteForm() {
@@ -48,6 +46,7 @@ export default function QuoteForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
     "idle"
   );
+  const [serverError, setServerError] = useState("");
 
   const validate = (): boolean => {
     const next: Partial<Record<keyof FormState, string>> = {};
@@ -74,16 +73,28 @@ export default function QuoteForm() {
       return;
     }
     setStatus("submitting");
+    setServerError("");
     try {
       const res = await fetch("/api/quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      if (!res.ok) throw new Error("Request failed");
+      const data = (await res.json().catch(() => null)) as
+        | { ok?: boolean; error?: string }
+        | null;
+      if (!res.ok || !data?.ok) {
+        setServerError(
+          data?.error ||
+            `Something went wrong. Please call us at ${PHONE_DISPLAY}.`
+        );
+        setStatus("error");
+        return;
+      }
       setStatus("success");
       setForm(INITIAL);
     } catch {
+      setServerError(`Something went wrong. Please call us at ${PHONE_DISPLAY}.`);
       setStatus("error");
     }
   };
@@ -178,9 +189,20 @@ export default function QuoteForm() {
           <FadeIn className="lg:col-span-3">
             <form
               onSubmit={onSubmit}
-              className="card-surface grid grid-cols-1 gap-4 !bg-[#0F1624]/85 p-6 backdrop-blur-sm sm:grid-cols-2 sm:p-8"
+              className="relative card-surface grid grid-cols-1 gap-4 !bg-[#0F1624]/85 p-6 backdrop-blur-sm sm:grid-cols-2 sm:p-8"
               noValidate
             >
+              <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
+                <label htmlFor="website">Website</label>
+                <input
+                  id="website"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={form.website}
+                  onChange={(e) => setForm((f) => ({ ...f, website: e.target.value }))}
+                />
+              </div>
               {field("fullName", "Full Name", {
                 placeholder: "Jane Doe",
                 autoComplete: "name",
@@ -239,7 +261,8 @@ export default function QuoteForm() {
                 )}
                 {status === "error" && (
                   <p className="mt-3 text-base font-medium text-red-300" role="alert">
-                    Something went wrong. Please call us or try again.
+                    {serverError ||
+                      `Something went wrong. Please call us at ${PHONE_DISPLAY}.`}
                   </p>
                 )}
               </div>
@@ -258,7 +281,7 @@ export default function QuoteForm() {
                   Prefer to talk?
                 </h3>
                 <p className="mt-2 text-base text-brand-muted">
-                  Call or email — we typically respond the same day.
+                  Call — we typically respond the same day.
                 </p>
               </div>
 
@@ -272,20 +295,6 @@ export default function QuoteForm() {
                 <span>
                   <span className="block text-sm text-brand-muted">Phone</span>
                   <span className="font-semibold">{PHONE_DISPLAY}</span>
-                </span>
-              </a>
-
-              {/* TODO: replace with real business email */}
-              <a
-                href={EMAIL_HREF}
-                className="flex min-h-11 items-center gap-3 text-white transition hover:text-brand-cyan"
-              >
-                <span className="rounded-full bg-white/5 p-2.5 text-brand-cyan">
-                  <Mail className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <span>
-                  <span className="block text-sm text-brand-muted">Email</span>
-                  <span className="font-semibold">{EMAIL_DISPLAY}</span>
                 </span>
               </a>
 
